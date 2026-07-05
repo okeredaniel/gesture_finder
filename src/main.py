@@ -62,17 +62,13 @@ def main():
     print("Loaded reaction images:", list(reactions.keys()))
 
     prev_time = 0
-    frame_count = 0
 
     while True:
         success, frame = cap.read()
-        print("Frame read success:", success)
 
         if not success:
             print("Could not read from webcam.")
             break
-
-        frame_count += 1
 
         frame = cv2.flip(frame, 1)  # mirror so it feels natural
 
@@ -100,7 +96,6 @@ def main():
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 0), 2)
 
         cv2.imshow("Gesture Pic Finder", frame)
-        print("Displayed frame", frame_count)
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
